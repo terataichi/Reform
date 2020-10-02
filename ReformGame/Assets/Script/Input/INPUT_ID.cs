@@ -9,5 +9,5 @@ public enum INPUT_ID
     BATU,           // バツ
     SANKAKU,        // 四角
     SIKAKU,         // 三角
-    MAX
+    //MAX
 }

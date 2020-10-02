@@ -8,6 +8,8 @@ namespace Player
     public class Player : MonoBehaviour
     {
         [SerializeField] private InputState input_ = null;
+        [SerializeField] private PlayerMover mover_ = null;
+        [SerializeField] private GameObject mainCamera_ = null; 
         // Start is called before the first frame update
         void Start()
         {
@@ -17,6 +19,7 @@ namespace Player
         void Update()
         {
             input_.InputUpdate();
+            mover_.MoveUpdate(input_, mainCamera_);
         }
     }
 }
