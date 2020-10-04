@@ -9,7 +9,8 @@ namespace Player
     {
         [SerializeField] private InputState input_ = null;
         [SerializeField] private PlayerMover mover_ = null;
-        [SerializeField] private GameObject mainCamera_ = null; 
+        [SerializeField] private GameObject mainCamera_ = null;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -20,6 +21,16 @@ namespace Player
         {
             input_.InputUpdate();
             mover_.MoveUpdate(input_, mainCamera_);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            // 当たった対象のにIHitPlayerがあったら呼ぶ
+            var hitPlayer = other.gameObject.GetComponent<IHitPlayer>();
+            if(hitPlayer != null)
+            {
+                hitPlayer.HitPlayer(this.gameObject);
+            }
         }
     }
 }

@@ -18,7 +18,10 @@ public class Furniture : MonoBehaviour, IHitPlayer
 
     public void HitPlayer(GameObject player)
     {
-     
+        if()
+        {
+
+        }
     }
 
     public void InputPlayer(Input input)
