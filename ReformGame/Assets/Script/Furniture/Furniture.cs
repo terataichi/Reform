@@ -2,30 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Furniture : MonoBehaviour, IHitPlayer
+
+namespace Furuniture
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Furniture : MonoBehaviour, Player.IHitPlayer
     {
-        
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        }
 
-    public void HitPlayer(GameObject player)
-    {
-        //if()
-        //{
+        // Update is called once per frame
+        void Update()
+        {
 
-        //}
-    }
+        }
 
-    public void InputPlayer(Input input)
-    {
-        
+        public void HitPlayer(GameObject player)
+        {
+            //if()
+            //{
+
+            //}
+        }
+
+        public void InputPlayer(Input input)
+        {
+
+        }
     }
 }
