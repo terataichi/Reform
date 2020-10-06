@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Furuniture
 {
-    public class Furniture : MonoBehaviour, Player.IHitPlayer
+    public class Furniture : MonoBehaviour, Player.IHitPlayerRay
     {
         public void HitPlayerRay(Player.Player player)
         {

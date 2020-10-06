@@ -35,7 +35,7 @@ namespace Player
             ray_ = new Ray(this.gameObject.transform.position, this.gameObject.transform.forward);
             if(Physics.Raycast(ray_, out hitObj_, player_.RayRenge))
             {
-                var hitObj = hitObj_.collider.gameObject.GetComponent<IHitPlayer>();
+                var hitObj = hitObj_.collider.gameObject.GetComponent<IHitPlayerRay>();
                 if (hitObj != null) 
                 {
                     hitObj.HitPlayerRay(player_);

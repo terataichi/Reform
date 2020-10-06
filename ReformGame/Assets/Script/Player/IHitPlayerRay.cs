@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public interface IHitPlayer
+    public interface IHitPlayerRay
     {
         void HitPlayerRay(Player player);
     }
