@@ -6,6 +6,6 @@ namespace Player
 {
     public interface IHitPlayer
     {
-        void HitPlayer(GameObject player);
+        void HitPlayerRay(Player player);
     }
 }

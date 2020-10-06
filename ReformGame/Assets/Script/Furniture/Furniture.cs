@@ -7,29 +7,9 @@ namespace Furuniture
 {
     public class Furniture : MonoBehaviour, Player.IHitPlayer
     {
-        // Start is called before the first frame update
-        void Start()
+        public void HitPlayerRay(Player.Player player)
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        public void HitPlayer(GameObject player)
-        {
-            //if()
-            //{
-
-            //}
-        }
-
-        public void InputPlayer(Input input)
-        {
-
+            player.SetTarget = this.gameObject;
         }
     }
 }
