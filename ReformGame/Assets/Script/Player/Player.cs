@@ -87,9 +87,13 @@ namespace Player
             mover_.MoveUpdate(input_, mainCamera_);
             targetRay_.RayUpdete();
             holdMng_.HoldUpdate(input_.GetKeyTrgDown(INPUT_ID.MARU));
-            if(input_.GetKeyTrgDown(INPUT_ID.BATU))
+
+            if (targetFurniture_ != null)
             {
-                targetFurniture_.transform.SetParent(null);
+                if (input_.GetKeyTrgDown(INPUT_ID.BATU))
+                {
+                    targetFurniture_.transform.SetParent(null);
+                }
             }
         }
         /// <summary>
