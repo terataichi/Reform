@@ -15,6 +15,11 @@ namespace Player
         private Transform transform_;
         private Vector3 movePower_;
 
+        public ref Vector3 MovePower
+        {
+            get { return ref movePower_; }
+        }
+
         // Start is called before the first frame update
         void Start()
         {

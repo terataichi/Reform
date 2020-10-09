@@ -85,7 +85,7 @@ namespace Player
         {
             input_.InputUpdate();
             mover_.MoveUpdate(input_, mainCamera_);
-            targetRay_.RayUpdete();
+            targetRay_.RayUpdete(ref mover_.MovePower);
             holdMng_.HoldUpdate(input_.GetKeyTrgDown(INPUT_ID.MARU));
 
             if (targetFurniture_ != null)

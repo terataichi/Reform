@@ -30,7 +30,7 @@ namespace Player
             player_ = this.gameObject.GetComponent<Player>();
         }
 
-        public void RayUpdete()
+        public void RayUpdete(ref Vector3 movePower)
         {
             ray_ = new Ray(this.gameObject.transform.position, this.gameObject.transform.forward);
             if(Physics.Raycast(ray_, out hitObj_, player_.RayRenge))
@@ -38,7 +38,7 @@ namespace Player
                 var hitObj = hitObj_.collider.gameObject.GetComponent<IHitPlayerRay>();
                 if (hitObj != null) 
                 {
-                    hitObj.HitPlayerRay(player_);
+                    hitObj.HitPlayerRay(player_, ref movePower);
                 }
             }
             else

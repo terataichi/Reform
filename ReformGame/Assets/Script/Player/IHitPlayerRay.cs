@@ -6,6 +6,6 @@ namespace Player
 {
     public interface IHitPlayerRay
     {
-        void HitPlayerRay(Player player);
+        void HitPlayerRay(Player player,ref Vector3 movePower);
     }
 }
