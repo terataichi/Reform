@@ -4,15 +4,10 @@ using UnityEngine;
 using System;
 using GameInput;
 
-
 namespace Player
 {
     public class Player : MonoBehaviour
     {
-        /// <summary>
-        /// 入力関係
-        /// </summary>
-        [SerializeField] private InputState input_ = null;
         /// <summary>
         ///  Player実際に動かしてるやつ CharCon使用
         /// </summary>
@@ -37,6 +32,11 @@ namespace Player
         /// Target決めるときのRayの届く距離
         /// </summary>
         [SerializeField] private float rayRenge_ = 0;
+
+        /// <summary>
+        /// Unityinput用buttonName格納先
+        /// </summary>
+        private Dictionary<int, Dictionary<INPUT_ID, String>> inputNameList_ = new Dictionary<int, Dictionary<INPUT_ID, String>>();
 
 
 
@@ -76,21 +76,34 @@ namespace Player
         }
 
         // Start is called before the first frame update
-        void Start()
+        public void Start()
         {
+            for (int i = 1; i <= 4; i++)
+            {
+                inputNameList_.Add(i, new Dictionary<INPUT_ID, String>());
+            }
+                for (int i = 1; i <= 4; i++)
+            {
+                inputNameList_[i].Add(INPUT_ID.B,"C" + i + "ButtonB");
+                inputNameList_[i].Add(INPUT_ID.A, "C" + i + "ButtonA");
+                inputNameList_[i].Add(INPUT_ID.X, "C" + i + "ButtonX");
+                inputNameList_[i].Add(INPUT_ID.Y, "C" + i + "ButtonY");
+                inputNameList_[i].Add(INPUT_ID.LSTICK_X,"C" + i + "LStickX");
+                inputNameList_[i].Add(INPUT_ID.LSTICK_Y, "C" + i + "LStickY");
+                inputNameList_[i].Add(INPUT_ID.RSTICK_X, "C" + i + "RStickY");
+                inputNameList_[i].Add(INPUT_ID.RSTICK_Y, "C" + i + "RStickX");
+            }
         }
-
         // Update is called once per frame
         void Update()
         {
-            input_.InputUpdate();
-            mover_.MoveUpdate(input_, mainCamera_);
+            mover_.MoveUpdate(inputNameList_[1],mainCamera_);
             targetRay_.RayUpdete(ref mover_.MovePower);
-            holdMng_.HoldUpdate(input_.GetKeyTrgDown(INPUT_ID.MARU));
+            holdMng_.HoldUpdate(Input.GetButtonDown(inputNameList_[1][INPUT_ID.B]));
 
             if (targetFurniture_ != null)
             {
-                if (input_.GetKeyTrgDown(INPUT_ID.BATU))
+                if (Input.GetButtonDown(inputNameList_[1][INPUT_ID.A]))
                 {
                     targetFurniture_.transform.SetParent(null);
                 }

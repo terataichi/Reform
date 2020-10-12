@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using GameInput;
+
 
 namespace Player
 {
@@ -28,10 +30,10 @@ namespace Player
             movePower_ = new Vector3 { };
         }
 
-        public void MoveUpdate(InputState input,GameObject camera)
+        public void MoveUpdate(Dictionary<INPUT_ID, String> name, GameObject camera)
         {
-            movePower_.x = input.GetLStickInput().now.x * moveSpeed_;
-            movePower_.z = input.GetLStickInput().now.y * moveSpeed_;
+            movePower_.x = Input.GetAxis(name[INPUT_ID.LSTICK_X]) * moveSpeed_;
+            movePower_.z = Input.GetAxis(name[INPUT_ID.LSTICK_Y]) * moveSpeed_;
 
             movePower_ = Quaternion.Euler(0, camera.transform.localEulerAngles.y, 0) * movePower_;
 
@@ -40,7 +42,7 @@ namespace Player
             if (tmpPower.magnitude > 0.01f) 
             {
                 var rotation = Quaternion.LookRotation(tmpPower);
-                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * spinSpeed_);
+                transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 1);
             }
 
             controller_.Move(movePower_*Time.deltaTime);
