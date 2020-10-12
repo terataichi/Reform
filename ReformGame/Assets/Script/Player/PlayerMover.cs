@@ -9,8 +9,7 @@ namespace Player
 {
     public class PlayerMover : MonoBehaviour
     {
-        [SerializeField] float moveSpeed_;
-        [SerializeField] float spinSpeed_;
+        [SerializeField] float moveSpeed_ = 0.0f;
 
         CharacterController controller_;
 

@@ -25,13 +25,17 @@ namespace Player
         /// </summary>
         [SerializeField] private GameObject mainCamera_ = null;
         /// <summary>
-        ///  ものを持てる距離
+        ///  ものを持てる距離　1以下だとPlayer内部にめり込んでる扱いのため持てなくなる　1以上にしよう
         /// </summary>
         [SerializeField] private float handRenge_ = 0;
         /// <summary>
         /// Target決めるときのRayの届く距離
         /// </summary>
         [SerializeField] private float rayRenge_ = 0;
+        /// <summary>
+        /// どのコントローラーかの識別用 デバックしやすいように今SerializeFieldなだけ 1～4
+        /// </summary>
+        [SerializeField] private int padNum_ = 1;
 
         /// <summary>
         /// Unityinput用buttonName格納先
@@ -76,14 +80,16 @@ namespace Player
         }
 
         // Start is called before the first frame update
+        /// <summary>
+        /// 現在コントローラー用のStringを設定しているがこのままだとPlayerの数だけ作られてしまうため
+        /// 外部に逃がしてpadNum_に応じてデータをもらう方が無駄がなさそう
+        /// 変更予定
+        /// </summary>
         public void Start()
         {
-            for (int i = 1; i <= 4; i++)
-            {
-                inputNameList_.Add(i, new Dictionary<INPUT_ID, String>());
-            }
                 for (int i = 1; i <= 4; i++)
             {
+                inputNameList_.Add(i, new Dictionary<INPUT_ID, String>());
                 inputNameList_[i].Add(INPUT_ID.B,"C" + i + "ButtonB");
                 inputNameList_[i].Add(INPUT_ID.A, "C" + i + "ButtonA");
                 inputNameList_[i].Add(INPUT_ID.X, "C" + i + "ButtonX");
@@ -97,13 +103,13 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            mover_.MoveUpdate(inputNameList_[1],mainCamera_);
+            mover_.MoveUpdate(inputNameList_[padNum_],mainCamera_);
             targetRay_.RayUpdete(ref mover_.MovePower);
-            holdMng_.HoldUpdate(Input.GetButtonDown(inputNameList_[1][INPUT_ID.B]));
+            holdMng_.HoldUpdate(Input.GetButtonDown(inputNameList_[padNum_][INPUT_ID.B]));
 
             if (targetFurniture_ != null)
             {
-                if (Input.GetButtonDown(inputNameList_[1][INPUT_ID.A]))
+                if (Input.GetButtonDown(inputNameList_[padNum_][INPUT_ID.A]))
                 {
                     targetFurniture_.transform.SetParent(null);
                 }

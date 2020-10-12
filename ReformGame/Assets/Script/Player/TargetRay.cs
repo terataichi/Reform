@@ -6,7 +6,7 @@ namespace Player
 {
     public class TargetRay : MonoBehaviour
     {
-        [SerializeField] private Material mate;
+        [SerializeField] private Material mate = null;
 
         private Player player_;
         private Ray ray_;
