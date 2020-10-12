@@ -241,6 +241,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed_: 5
   spinSpeed_: 5
+--- !u!95 &506427256 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3757893244160738869, guid: 2bab4603828a53d498a3dc042e918022,
+    type: 3}
+  m_PrefabInstance: {fileID: 503352782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!143 &506427258
 CharacterController:
   m_ObjectHideFlags: 0
@@ -284,6 +290,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f7e3effdfef1c4283a35be79d09057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!320 &506427261
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506427252}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 8d437a6851a30e249a4c92159c76844a, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 0}
+    value: {fileID: 506427256}
+  - key: {fileID: -2124706123313270387, guid: 8d437a6851a30e249a4c92159c76844a, type: 2}
+    value: {fileID: 506427256}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &686796612
 GameObject:
   m_ObjectHideFlags: 0
