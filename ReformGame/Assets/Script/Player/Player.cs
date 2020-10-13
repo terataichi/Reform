@@ -49,6 +49,16 @@ namespace Player
         /// </summary>
         private GameObject targetFurniture_ = null;
 
+        /// <summary>
+        /// 状態コントロール用enum
+        /// </summary>
+        private PLAYERSTATE state_;
+
+        public PLAYERSTATE State
+        {
+            set { state_ = value; }
+        }
+
         public float HandRenge 
         {
             get { return handRenge_; } 
@@ -87,6 +97,7 @@ namespace Player
         /// </summary>
         public void Start()
         {
+            state_ = PLAYERSTATE.STAY;
                 for (int i = 1; i <= 4; i++)
             {
                 inputNameList_.Add(i, new Dictionary<INPUT_ID, String>());
@@ -114,6 +125,7 @@ namespace Player
                     targetFurniture_.transform.SetParent(null);
                 }
             }
+            gameObject.GetComponent<Animator>().SetInteger("state", (int)state_);
         }
         /// <summary>
         /// 上から見たときPlayerのHandRange内にTargetになっている家具があるかどうか

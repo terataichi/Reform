@@ -43,6 +43,14 @@ namespace Player
                 var rotation = Quaternion.LookRotation(tmpPower);
                 transform.rotation = Quaternion.Lerp(transform.rotation, rotation, 1);
             }
+            if (movePower_ != Vector3.zero) 
+            {
+                transform_.gameObject.GetComponent<Player>().State = PLAYERSTATE.RUN;
+            }
+            else
+            {
+                transform_.gameObject.GetComponent<Player>().State = PLAYERSTATE.STAY;
+            }
 
             controller_.Move(movePower_*Time.deltaTime);
         }
