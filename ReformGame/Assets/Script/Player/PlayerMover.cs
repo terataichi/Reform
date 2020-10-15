@@ -15,6 +15,7 @@ namespace Player
 
         private Transform transform_;
         private Vector3 movePower_;
+        private Player player_;
 
         public ref Vector3 MovePower
         {
@@ -26,6 +27,7 @@ namespace Player
         {
             transform_ = transform;
             controller_ = GetComponent<CharacterController>();
+            player_ = gameObject.GetComponent<Player>();
             movePower_ = new Vector3 { };
         }
 
@@ -45,11 +47,11 @@ namespace Player
             }
             if (movePower_ != Vector3.zero) 
             {
-                transform_.gameObject.GetComponent<Player>().State = PLAYERSTATE.RUN;
+                player_.State = PLAYERSTATE.RUN;
             }
             else
             {
-                transform_.gameObject.GetComponent<Player>().State = PLAYERSTATE.STAY;
+                player_.State = PLAYERSTATE.STAY;
             }
 
             controller_.Move(movePower_*Time.deltaTime);
