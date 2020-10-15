@@ -389,7 +389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed_: 5
-  spinSpeed_: 5
 --- !u!114 &73939109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,13 +401,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66a062e8fe09dbf44b1599bff22ed4c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input_: {fileID: 73939110}
   mover_: {fileID: 73939108}
   targetRay_: {fileID: 73939107}
   holdMng_: {fileID: 73939106}
   mainCamera_: {fileID: 683853559}
   handRenge_: 1.3
   rayRenge_: 10
+  padNum_: 1
 --- !u!114 &73939110
 MonoBehaviour:
   m_ObjectHideFlags: 0
